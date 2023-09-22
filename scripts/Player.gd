@@ -69,3 +69,14 @@ func play_anim(movement):
 				anim.play("Back_walk")
 			elif movement == 0:
 				anim.play("Back_idle")
+
+
+
+
+
+func _on_player_hitbox_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_player_hitbox_body_exited(body):
+	pass # Replace with function body.

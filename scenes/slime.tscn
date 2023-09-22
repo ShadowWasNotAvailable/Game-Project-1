@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b7b3mi7a1f6es"]
+[gd_scene load_steps=22 format=3 uid="uid://b7b3mi7a1f6es"]
 
 [ext_resource type="Texture2D" uid="uid://drecj213nw1m6" path="res://sprites/characters/slime.png" id="1_5c5aj"]
 [ext_resource type="Script" path="res://scripts/Slime.gd" id="1_crtlp"]
@@ -137,6 +137,8 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_7el7t"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_avyts"]
+
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_crtlp")
 
@@ -154,8 +156,17 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_1pvut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_7el7t")
 
+[node name="Enemy_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_hitbox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_avyts")
+
 [connection signal="body_entered" from="Detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]

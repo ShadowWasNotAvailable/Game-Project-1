@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b87b2ft5lkg5"]
+[gd_scene load_steps=26 format=3 uid="uid://b87b2ft5lkg5"]
 
 [ext_resource type="Texture2D" uid="uid://bf6dk2c7al44h" path="res://sprites/tilesets/plains.png" id="1_lovpi"]
 [ext_resource type="Texture2D" uid="uid://b6qoquyo3e7eg" path="res://sprites/tilesets/grass.png" id="2_q0t2b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bild61to772os" path="res://sprites/particles/dust_particles_01.png" id="7_6lat7"]
 [ext_resource type="Texture2D" uid="uid://doi3fxph0ocdo" path="res://sprites/objects/chest_01.png" id="7_r01bx"]
 [ext_resource type="Texture2D" uid="uid://dg4dgi14un1aw" path="res://sprites/tilesets/walls/walls.png" id="8_h8dc4"]
+[ext_resource type="PackedScene" uid="uid://b7b3mi7a1f6es" path="res://scenes/slime.tscn" id="13_3loyu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hkx3"]
 texture = ExtResource("1_lovpi")
@@ -549,4 +550,8 @@ layer_3/tile_data = PackedInt32Array(-720900, 2, 5, -720904, 2, 5, -655364, 2, 5
 
 [node name="Player" parent="TileMap" instance=ExtResource("4_k5m6i")]
 z_index = 1
-position = Vector2(6, -194)
+position = Vector2(60, -133)
+
+[node name="Slime" parent="TileMap" instance=ExtResource("13_3loyu")]
+z_index = 1
+position = Vector2(93, -120)
