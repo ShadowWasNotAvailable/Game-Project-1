@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0t75whqb2n60"]
+
+[ext_resource type="Script" path="res://scripts/Chest.gd" id="1_8wl1s"]
+[ext_resource type="Texture2D" uid="uid://doi3fxph0ocdo" path="res://sprites/objects/chest_01.png" id="2_dqel1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3isb"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f26s8"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_winsr"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8itlq"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg4pl"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amvv1"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_302bo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3isb")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f26s8")
+}],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_winsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8itlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg4pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amvv1")
+}],
+"loop": true,
+"name": &"Opening",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpt2e"]
+size = Vector2(14, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj8bs"]
+
+[node name="Chest" type="CharacterBody2D"]
+script = ExtResource("1_8wl1s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_302bo")
+animation = &"Closed"
+frame_progress = 0.534086
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_tpt2e")
+
+[node name="Hit-Zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit-Zone"]
+shape = SubResource("RectangleShape2D_tj8bs")
+
+[connection signal="body_entered" from="Hit-Zone" to="." method="_on_hit_zone_body_entered"]
+[connection signal="body_exited" from="Hit-Zone" to="." method="_on_hit_zone_body_exited"]
