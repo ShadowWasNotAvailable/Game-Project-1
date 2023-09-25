@@ -4,7 +4,7 @@ var openable = false
 var opened = true
 
 
-func play_anim(_movement):
+func play_anim(movement):
 	var anim = $AnimatedSprite2D
 	
 	if opened:
@@ -18,10 +18,10 @@ func play_anim(_movement):
 			anim.play("Opening")
 			opened = true
 
-func _on_hit_zone_body_entered(_body):
+func _on_hit_zone_body_entered(body):
 	openable = true
 		
 
 
-func _on_hit_zone_body_exited(_body):
+func _on_hit_zone_body_exited(body):
 	openable = false
