@@ -1,9 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0t75whqb2n60"]
+[gd_scene load_steps=16 format=3 uid="uid://b0t75whqb2n60"]
 
 [ext_resource type="Script" path="res://scripts/Chest.gd" id="1_8wl1s"]
 [ext_resource type="Texture2D" uid="uid://doi3fxph0ocdo" path="res://sprites/objects/chest_01.png" id="2_dqel1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3isb"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_766wy"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6o55"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc5p6"]
+atlas = ExtResource("2_dqel1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf8um"]
 atlas = ExtResource("2_dqel1")
 region = Rect2(0, 0, 16, 16)
 
@@ -38,6 +54,23 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_766wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6o55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc5p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf8um")
+}],
+"loop": true,
+"name": &"Closing",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f26s8")
 }],
@@ -46,7 +79,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_winsr")
 }, {
 "duration": 1.0,
@@ -74,9 +107,10 @@ script = ExtResource("1_8wl1s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_302bo")
 animation = &"Closed"
-frame_progress = 0.534086
+frame_progress = 0.347709
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_tpt2e")
 

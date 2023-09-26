@@ -6,21 +6,21 @@ var opened = true
 
 func play_anim(movement):
 	var anim = $AnimatedSprite2D
-	
-	if opened:
-		anim.play("Open")
-	else:
-		anim.play("Closed")
-	
-	
+
 	if openable:
-		if Input.is_action_pressed("ui_up"):
-			anim.play("Opening")
-			opened = true
+		if Input.is_action_pressed("ui_e"):
+				anim.play('Opening')
+				anim.queue('Open')
+				opened = true
+				
+		if Input.is_action_pressed("ui_q	"):
+			if opened:
+				anim.play('Closing')
+				anim.queue('Closed')
+				opened = false
 
 func _on_hit_zone_body_entered(body):
 	openable = true
-		
 
 
 func _on_hit_zone_body_exited(body):
