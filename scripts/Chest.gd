@@ -8,12 +8,12 @@ func play_anim(movement):
 	var anim = $AnimatedSprite2D
 
 	if openable:
-		if Input.is_action_pressed("ui_e"):
+		if Input.is_action_pressed("ui_up"):
 				anim.play('Opening')
 				anim.queue('Open')
 				opened = true
 				
-		if Input.is_action_pressed("ui_q	"):
+		if Input.is_action_pressed("ui_down"):
 			if opened:
 				anim.play('Closing')
 				anim.queue('Closed')
