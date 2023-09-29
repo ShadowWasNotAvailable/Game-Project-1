@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b87b2ft5lkg5"]
+[gd_scene load_steps=28 format=3 uid="uid://b87b2ft5lkg5"]
 
 [ext_resource type="Texture2D" uid="uid://bf6dk2c7al44h" path="res://sprites/tilesets/plains.png" id="1_lovpi"]
 [ext_resource type="Texture2D" uid="uid://b6qoquyo3e7eg" path="res://sprites/tilesets/grass.png" id="2_q0t2b"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dg4dgi14un1aw" path="res://sprites/tilesets/walls/walls.png" id="8_h8dc4"]
 [ext_resource type="PackedScene" uid="uid://b7b3mi7a1f6es" path="res://scenes/slime.tscn" id="13_3loyu"]
 [ext_resource type="PackedScene" uid="uid://b0t75whqb2n60" path="res://scenes/chest.tscn" id="14_neu5k"]
+[ext_resource type="AudioStream" uid="uid://cm88wnkmdd1y4" path="res://banana.mp3" id="15_gg8gk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hkx3"]
 texture = ExtResource("1_lovpi")
@@ -563,3 +564,7 @@ position = Vector2(93, -120)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(151, -344)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_gg8gk")
+autoplay = true

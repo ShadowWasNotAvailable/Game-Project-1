@@ -1,27 +1,38 @@
 extends CharacterBody2D
 
 var openable = false
-var opened = true
+var opened = false
+var anim
 
+func _ready():
+	anim = $AnimatedSprite2D
+	
+func _process(_delta):
+	play_anim()
 
-func play_anim(movement):
-	var anim = $AnimatedSprite2D
+func play_anim():
 
 	if openable:
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("ui_page_up"):
 				anim.play('Opening')
-				anim.queue('Open')
 				opened = true
 				
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("ui_page_down"):
 			if opened:
 				anim.play('Closing')
-				anim.queue('Closed')
 				opened = false
 
 func _on_hit_zone_body_entered(body):
-	openable = true
-
+	if body.is_in_group("player"):
+		openable = true
+		print(openable)
+	
 
 func _on_hit_zone_body_exited(body):
-	openable = false
+	if body.is_in_group("player"):
+		if opened:
+			anim.play('Closing')
+			openable = false
+		else:
+			openable = false
+	

@@ -10,7 +10,6 @@ func _physics_process(delta):
 	player_movement(delta)
 
 func player_movement(delta):
-	
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "right"
 		play_anim(1)
@@ -73,10 +72,12 @@ func play_anim(movement):
 
 
 
-
 func _on_player_hitbox_body_entered(body):
 	pass # Replace with function body.
 
 
 func _on_player_hitbox_body_exited(body):
 	pass # Replace with function body.
+
+
+

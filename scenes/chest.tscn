@@ -49,7 +49,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w3isb")
 }],
-"loop": true,
+"loop": false,
 "name": &"Closed",
 "speed": 5.0
 }, {
@@ -66,7 +66,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uf8um")
 }],
-"loop": true,
+"loop": false,
 "name": &"Closing",
 "speed": 5.0
 }, {
@@ -74,7 +74,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f26s8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Open",
 "speed": 5.0
 }, {
@@ -91,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_amvv1")
 }],
-"loop": true,
+"loop": false,
 "name": &"Opening",
 "speed": 5.0
 }]
@@ -106,8 +106,7 @@ script = ExtResource("1_8wl1s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_302bo")
-animation = &"Closed"
-frame_progress = 0.125681
+animation = &"Opening"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
