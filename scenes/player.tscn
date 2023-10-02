@@ -416,9 +416,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4nj11"]
 radius = 0.521384
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ka3t"]
-radius = 9.0
-height = 24.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwl2a"]
+radius = 13.0384
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
@@ -440,9 +439,13 @@ shape = SubResource("CircleShape2D_4nj11")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_hitbox"]
 position = Vector2(0, -9)
-shape = SubResource("CapsuleShape2D_7ka3t")
+shape = SubResource("CircleShape2D_nwl2a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="Player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
