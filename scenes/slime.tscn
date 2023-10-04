@@ -193,7 +193,7 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_avyts"]
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" groups=["Slime"]]
 script = ExtResource("1_crtlp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

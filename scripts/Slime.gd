@@ -1,10 +1,16 @@
 extends CharacterBody2D
 
-var speed = 80
+var speed = 40
 var player_chase = false
 var player = null
 
+var health = 50
+var player_inattack_zone = false
+
 func _physics_process(delta):
+	deal_with_damage()
+	
+	
 	if player_chase and player:
 		position += (player.position - position)/speed
 
@@ -40,8 +46,22 @@ func _on_enemy_hitbox_body_entered(body):
 			$AnimatedSprite2D.flip_h = true
 		else:
 			$AnimatedSprite2D.flip_h = false
+			
+	if body.is_in_group("player"):
+		player_inattack_zone = true
 	
 
 func _on_enemy_hitbox_body_exited(body):
 	if body.is_in_group("player"):
 		player_chase = true
+	if body.is_in_group("player"):
+		player_inattack_zone = false
+		
+func deal_with_damage():
+	if player_inattack_zone and Global.player_current_attack == true:
+		health = health - 10
+		print("slime health =", health)
+		if health <= 0:
+			self.queue_free()
+
+# combat system 17:54

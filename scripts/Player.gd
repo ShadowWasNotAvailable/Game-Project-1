@@ -5,6 +5,8 @@ var enemy_attack_cooldown = true
 var health = 100
 var player_alive = true
 
+var attacking = false
+
 const speed = 100
 var current_dir = "none"
 
@@ -86,27 +88,22 @@ func player():
 	pass
 
 func _on_player_hitbox_body_entered(body):
-	if body.has_method("Slime"):
+	if body.is_in_group("Slime"):
 		enemy_inattack_range = true
 
 
 func _on_player_hitbox_body_exited(body):
-	if body.has_method("Slime"):
+	if body.is_in_group("Slime"):
 		enemy_inattack_range = false
 		print("false")
 		
-func Slime():
-	pass
-		
 func enemy_attack():
-	if enemy_inattack_range:
-		health = health - 0
-		enemy_attack_cooldown = false
-		$attack_cooldown.start()
-		print(health)
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+			health = health - 5
+			enemy_attack_cooldown = false
+			$attack_cooldown.start()
+			print(health)
 		
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
-
-#combat system 11:18
 
