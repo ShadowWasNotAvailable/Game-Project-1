@@ -106,7 +106,7 @@ script = ExtResource("1_8wl1s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_302bo")
-animation = &"Opening"
+animation = &"Closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true

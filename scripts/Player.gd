@@ -124,7 +124,7 @@ func attack():
 			anim.flip_h = false
 			anim.play("Side_attack")
 			$deal_attack.start()
-		if dir == "right":
+		if dir == "left":
 			anim.flip_h = true
 			anim.play("Side_attack")
 			$deal_attack.start()
