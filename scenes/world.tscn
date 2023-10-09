@@ -565,6 +565,11 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(151, -344)
 
+[node name="Chest2" parent="TileMap" instance=ExtResource("14_neu5k")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-167, -105)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_gg8gk")
 autoplay = true

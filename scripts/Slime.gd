@@ -8,7 +8,7 @@ var health = 50
 var player_inattack_zone = false
 var Can_take_dmg = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	deal_with_damage()
 	
 	

@@ -4,7 +4,6 @@ var openable = false
 var closable = false
 var opened = false
 var lootable = false
-var coins = 0
 var anim
 
 func _ready():
@@ -20,8 +19,8 @@ func play_anim():
 			anim.play('Opening')
 			closable = true
 			openable = false
-			coins += randi_range(1, 15)
-			print("Coins = ", coins)
+			Global.coins += randi_range(1, 15)
+			print("Coins = ", Global.coins)
 		elif openable:
 			anim.play('Opening')
 			closable = true
