@@ -6,6 +6,7 @@ var player = null
 
 var health = 50
 var player_inattack_zone = false
+var Can_take_dmg = true
 
 func _physics_process(delta):
 	deal_with_damage()
@@ -59,9 +60,28 @@ func _on_enemy_hitbox_body_exited(body):
 		
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack == true:
-		health = health - 10
-		print("slime health =", health)
-		if health <= 0:
-			self.queue_free()
+		if Can_take_dmg:
+			$take_damage.start()
+			Can_take_dmg = false
+			health = health - 10
+			print("slime health =", health)
+			if health <= 0:
+				if Global.player_health < 100:
+					Global.player_health += 25
+					print("Healed 25 HP")
+				health = 0
+				player_inattack_zone = false
+				$AnimatedSprite2D.play("Death")
+				$dying.start()
 
-# combat system 17:54
+
+
+func _on_dying_timeout():
+	$dying.stop()
+	self.queue_free()
+	
+
+
+
+func _on_take_damage_timeout():
+	Can_take_dmg = true
