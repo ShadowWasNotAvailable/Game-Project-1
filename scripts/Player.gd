@@ -6,6 +6,8 @@ var attacking = false
 var PH_cooldown = false
 var potion_CD = false
 var current_dir = "none"
+var level_req = 0
+var hinc = 50
 
 const speed = 100
 
@@ -27,15 +29,18 @@ func _physics_process(delta):
 		Global.player_health = 0
 		print ("player has been killed")
 		self.queue_free()
-	if Global.player_health > 100:
-		Global.player_health = 100
+	if Global.player_health > Global.player_health_limit:
+		Global.player_health = Global.player_health_limit
 	if PH_cooldown == false:
-		if Global.player_health < 100:
+		if Global.player_health < Global.player_health_limit:
 			PH_cooldown = true
 			$passive_healing.start()
 			Global.player_health += 5
 			print("Healed 5 HP")
 			print("Current HP = ", Global.player_health)
+	
+	print(Global.player_health)
+	print(Global.current_level)
 
 
 
@@ -84,7 +89,7 @@ func player_movement(_delta):
 	if potion_CD == false:
 		if Input.is_action_pressed("hPressed"):
 			if Global.h_potion > 0:
-				if Global.player_health > 99:
+				if Global.player_health > Global.player_health_limit - 1:
 					print("You arent injured!")
 				else:
 					print("You used a potion!")
@@ -188,6 +193,16 @@ func attack():
 			anim.flip_h = false
 			anim.play("Front_attack")
 			$deal_attack.start()
+
+
+
+func XP():
+	if Global.XP > level_req:
+		Global.XP = Global.XP - level_req
+		level_req = level_req * 1.25
+		Global.current_level += 1
+		Global.player_health_limit += hinc
+		hinc += 50
 
 
 

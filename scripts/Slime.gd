@@ -9,9 +9,12 @@ var SU_CD = false
 var damaged = false
 var chance = randi_range(1,2)
 var health = randi_range(20, 50)
+var health_max = health
 var c_ammount = randi_range(1, 5)
 var player_inattack_zone = false
 var Can_take_dmg = true
+
+
 
 func _physics_process(_delta):
 	deal_with_damage()
@@ -51,6 +54,7 @@ func _on_detection_area_body_entered(body):
 		speed_up = true
 
 
+
 func _on_detection_area_body_exited(body):
 	if body.is_in_group("player"):
 		player = null
@@ -58,7 +62,7 @@ func _on_detection_area_body_exited(body):
 		speed_up = false
 	
 
-	
+
 
 func _on_enemy_hitbox_body_entered(body):
 	if body.is_in_group("player"):
@@ -71,7 +75,8 @@ func _on_enemy_hitbox_body_entered(body):
 			
 	if body.is_in_group("player"):
 		player_inattack_zone = true
-	
+
+
 
 func _on_enemy_hitbox_body_exited(body):
 	if body.is_in_group("player"):
@@ -90,6 +95,8 @@ func deal_with_damage():
 			if health <= 0:
 				c_ammount = randi_range(1, 5)
 				Global.coins += c_ammount
+				Global.XP += health_max * 2
+				print("You gained", health_max * 2, "XP")
 				print("You found ", c_ammount, " coins in the slime's corpse! ", "You now have ", Global.coins, " coins!")
 				dying = true
 				player_inattack_zone = false
@@ -113,9 +120,6 @@ func _on_dying_timeout():
 func _on_take_damage_timeout():
 	Can_take_dmg = true
 	damaged = false
-
-
-
 
 
 

@@ -3,7 +3,7 @@ extends CharacterBody2D
 var openable = false
 var closable = false
 var opened = false
-var lootable = false
+var lootable = true
 var c_ammount = randi_range(1, 15)
 var chance = randi_range(1,2)
 var anim
@@ -45,10 +45,6 @@ func play_anim():
 
 func _on_hit_zone_body_entered(body):
 	if body.is_in_group("player"):
-		if opened == false:
-			openable = true
-			lootable = true
-		else:
 			openable = true
 
 func _on_hit_zone_body_exited(body):

@@ -558,7 +558,7 @@ position = Vector2(60, -133)
 
 [node name="Slime" parent="TileMap" instance=ExtResource("13_3loyu")]
 z_index = 1
-position = Vector2(93, -120)
+position = Vector2(87, -104)
 
 [node name="Chest" parent="TileMap" instance=ExtResource("14_neu5k")]
 z_index = 1
@@ -569,6 +569,10 @@ position = Vector2(151, -344)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(-167, -105)
+
+[node name="Slime2" parent="TileMap" instance=ExtResource("13_3loyu")]
+z_index = 1
+position = Vector2(6, -193)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_gg8gk")
