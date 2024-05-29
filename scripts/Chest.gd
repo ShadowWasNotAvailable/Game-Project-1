@@ -4,6 +4,7 @@ var openable = false
 var closable = false
 var opened = false
 var lootable = false
+var player_in_zone = false
 var anim
 
 func _ready():
@@ -14,7 +15,7 @@ func _process(_delta):
 
 func play_anim():
 				
-	if Input.is_action_just_pressed("ePressed"):
+	if Input.is_action_just_pressed("ePressed") and player_in_zone == true:
 		if lootable == true and openable == true:
 			anim.play('Opening')
 			closable = true
@@ -39,15 +40,17 @@ func _on_hit_zone_body_entered(body):
 			lootable = true
 		else:
 			openable = true
+		player_in_zone = true
 
 func _on_hit_zone_body_exited(body):
 	if body.is_in_group("player"):
 		if closable:
 			anim.play('Closing')
 			opened = true
-			openable = true
+			openable = false
 			lootable = false
 			closable = false
 		else:
 			openable = false
+		player_in_zone = false
 	
