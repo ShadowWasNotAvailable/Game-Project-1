@@ -4,6 +4,7 @@ var openable = false
 var closable = false
 var opened = false
 var lootable = true
+var player_in_zone
 var c_ammount = randi_range(1, 15)
 var chance = randi_range(1,2)
 var anim
@@ -46,14 +47,13 @@ func play_anim():
 func _on_hit_zone_body_entered(body):
 	if body.is_in_group("player"):
 			openable = true
-		player_in_zone = true
+			player_in_zone = true
 
 func _on_hit_zone_body_exited(body):
 	if body.is_in_group("player"):
 		if closable:
 			anim.play('Closing')
 			opened = true
-			openable = false
 			lootable = false
 			closable = false
 		else:
