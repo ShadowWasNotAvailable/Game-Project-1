@@ -450,7 +450,15 @@ wait_time = 0.5
 [node name="deal_attack" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="passive_healing" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="Potion_CD" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="Player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="deal_attack" to="." method="_on_deal_attack_timeout"]
+[connection signal="timeout" from="passive_healing" to="." method="_on_passive_healing_timeout"]
+[connection signal="timeout" from="Potion_CD" to="." method="_on_potion_cd_timeout"]
